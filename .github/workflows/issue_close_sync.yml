@@ -14,22 +14,14 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    
-    - name: Jira Login
-      uses: atlassian/gajira-login@v2.0.0
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-    
-    - name: Get issue comments
+    - name: Sync 
       uses: dgounaris/git-jira-action@master
       with:
+        project: DPG
+        jiraBaseUrl: ${{ secrets.JIRA_BASE_URL }}
+        jiraEmail: ${{ secrets.JIRA_USER_EMAIL }}
+        jiraToken: ${{ secrets.JIRA_API_TOKEN }}
         token: ${{ secrets.GTOKEN }}
         owner: dgounaris
         repository: test-jira-actions
