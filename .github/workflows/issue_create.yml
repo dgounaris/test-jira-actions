@@ -19,6 +19,9 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      
+    - name: Small echo to verify something
+      run: echo ${{ secrets.JIRA_BASE_URL }}
         
     - name: Jira Create issue
       id: create
