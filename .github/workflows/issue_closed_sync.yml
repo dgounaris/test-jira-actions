@@ -3,8 +3,6 @@ name: Issue close sync
 on:
   issues:
     types: [edited]
-  schedule:
-    - cron: '*/15 * * * *'
 
 jobs:
   build:
